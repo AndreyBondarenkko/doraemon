@@ -24,6 +24,8 @@
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
     font-style: normal;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.64) 50%,
+        rgba(3, 113, 183, 0.27) 98%)
   }
 
   #header .menu-item a {
@@ -58,9 +60,28 @@
     color: white;
   }
 
+  #header .trigger-mobile-menu {
+    position: relative;
+    z-index: 101;
+  }
+
   /*** Hero ***/
   .hero .hero-slide {
     height: calc(100dvh - 76px);
+  }
+
+  .hero .image::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: 50%;
+    z-index: -1;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(40px);
+    background: #0371b759;
+    transform: translateX(-50%) rotateX(60deg);
   }
 
   .hero .swiper-button-prev,
@@ -74,6 +95,7 @@
     background-color: #ffffff;
     position: absolute;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
+    transition: all .3s ease-in-out;
   }
 
   .hero .swiper-button-prev::after,
@@ -101,12 +123,53 @@
     bottom: 0.75rem;
   }
 
+  .hero .bg-text {
+    z-index: -1;
+  }
+
   /*** Media ***/
+  @media (max-width: 767px) {
+    #header .header-nav {
+      position: fixed;
+      width: 100%;
+      max-width: 375px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 50px 30px;
+      background: rgba(3, 113, 183, 0.8) 100%;
+      z-index: 100;
+      transform: translateX(100%);
+      transition: all .3s ease-in-out;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #header .header-nav.show {
+      transform: translateX(0%);
+    }
+  }
+
   @media (min-width: 992px) {
     #header .menu-item a:hover::after {
       left: 0;
       width: 100%;
     }
+
+    .hero .swiper-button-prev:hover,
+    .hero .swiper-button-next:hover {
+      background-color: #0371b7;
+      color: #ffffff;
+    }
+  }
+
+  /*** Animation ***/
+  @keyframes animate-doraemon {
+    0% {}
+
+    100% {}
   }
 
   /*** Snipets ***/
@@ -126,6 +189,14 @@
 
     .flex-center {
       @apply flex items-center justify-center;
+    }
+
+    .text-shadow-black {
+      text-shadow: #0371b7 0 0 1px, #0371b7 0 4px 3px, #0371b7 0 9px 3px, #0371b7 0 12px 1px, rgba(0, 0, 0, 0.2) 0 14px 3px, rgba(0, 0, 0, 0.1) 0 20px 10px, rgba(0, 0, 0, 0.2) 0 15px 80px;
+    }
+
+    .text-shadow-primary {
+      text-shadow: #cdc901 0 0 1px, #cdc901 0 4px 3px, #cdc901 0 9px 3px, #0371b7 0 12px 1px, rgba(0, 0, 0, 0.2) 0 14px 3px, rgba(0, 0, 0, 0.1) 0 20px 10px, rgba(0, 0, 0, 0.2) 0 15px 80px;
     }
   }
 }

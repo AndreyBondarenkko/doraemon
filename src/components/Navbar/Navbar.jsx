@@ -1,18 +1,19 @@
 import React from 'react'
 
-const Navbar = ({ menu }) => {
+const Navbar = ({ isMenuOpen, menu }) => {
   return (
-    <nav>
-      <ul className="main-menu-list flex-items-center gap-7">
+    <nav className={`${isMenuOpen ? 'show' : ''} header-nav`} >
+
+      <ul className="main-menu-list flex-items-center flex-col md:flex-row gap-4 md:gap-7">
         {
           menu.map((item, index) =>
             <li key={index} className={`menu-item ${item.active ? 'active' : ''}`}>
-              <a href={item.link}>{item.name}</a>
+              <a className="text-2xl md:text-base tracking-wide md:tracking-normal text-white md:text-black" href={item.link}>{item.name}</a>
             </li>
           )
         }
       </ul>
-    </nav>
+    </nav >
   )
 }
 
